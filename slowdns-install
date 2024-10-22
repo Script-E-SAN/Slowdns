@@ -105,10 +105,10 @@ echo ""
 key () {
 echo "How do you want to get your key?"
 echo ""
-echo "[ 1 ] | Use existing key in file"
-echo "[ 2 ] | Delete file and generate new key"
-echo "[ 3 ] | Delete file and use default key"
-echo "[ x ] | Abort installation"
+echo "[ 1 ] | ใช้คีย์ที่มีอยู่ในไฟล์ "
+echo "[ 2 ] | ลบไฟล์และสร้างรหัสใหม่ "
+echo "[ 3 ] | ลบไฟล์และใช้คีย์ปัจจุบันของสคริปต์ "
+echo "[ x ] | ยกเลิกการติดตั้ง "
 echo ""
 echo -ne "Enter an option: " && read option
 case $option in
@@ -224,9 +224,9 @@ echo ""
 key_gen () {
 echo "How do you want to get your key?"
 echo ""
-echo "[ 1 ] | Generate on installation"
-echo "[ 2 ] | Use the default key"
-echo "[ x ] | Abort installation"
+echo "[ 1 ] | ใช้คีย์ปัจจุบันของสคริปต์ "
+echo "[ 2 ] | สร้างคีย์ใหม่เมื่อติดตั้ง "
+echo "[ x ] | ยกเลิกการติดตั้ง "
 echo ""
 echo -ne "Enter an option: " && read opc_key
 case $opc_key in
@@ -264,7 +264,7 @@ echo ""
 read -p "Press [Enter] to return to the menu or CTRL+C to exit"
 slowdns
 }
-opc_key2 () {
+opc_key1 () {
 echo -e "Downloading default key pair..."
 cd
 wget https://e-san-vpn.in.net/Install/slowdns/server.key > /dev/null 2>&1
@@ -295,8 +295,36 @@ echo -e "\033[1;33mKeep it in a safe place, you may need it in the future!\033[0
 echo ""
 read -p "Press [Enter] to return to the menu or CTRL+C to exit"
 }
+opc_key2 () {
+echo "Generating your key..."
+cd /etc/slowdns/
+./dns-server -gen-key -privkey-file /root/server.key -pubkey-file /root/server.pub
+echo -e "FINISHING..."
+finish_ist () {
+iptables -I INPUT -p udp --dport 5300 -j ACCEPT
+iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
+./startdns
+cd
+}
+fun_bar 'finish_ist'
+clear
+echo -e "${GRAY}[${RED}-${GRAY}]${RED} ───────────────── /// ────────────────── ${YELLOW}"
+figlet -p -f slant SlowDNS
+echo -e "${GRAY}[${RED}-${GRAY}]${RED} ─────────────── SlowDNS ──────────────── ${YELLOW}"
+echo -e "${GREEN} INSTALLATION COMPLETED!"
+echo ""
+echo -ne "${YELLOW}YOUR NS: ${WHITE} " && cat /etc/slowdns/infons
+echo ""
+echo -ne "${YELLOW}YOUR PUBLIC KEY:\033[0m " && cat /root/server.pub
+echo ""
+echo -e "${YELLOW}YOUR KEY is saved in the file /root/server.pub\033[0m"
+echo -e "${YELLOW}Keep it in a safe place, you may need it in the future!${YELLOW}"
+echo ""
+read -p "Press [Enter] to return to the menu or CTRL+C to exit"
+slowdns
+}
 opc_keyx () {
-echo "Aborting installation"
+echo " ยกเลิกการติดตั้ง "
 sleep 2
 exit
 }
