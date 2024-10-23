@@ -28,7 +28,7 @@ echo -e "${GRAY}[${RED}-${GRAY}]${RED} ────────── Mod SlowDN
         echo -ne "${YELLOW}YOUR NS: ${WHITE} " && cat /etc/slowdns/infons
         echo -ne "${YELLOW}YOUR PUBLIC KEY:\033[0m " && cat /root/server.pub
     else
-        echo "Not Installed"
+        echo "ยังไม่มีข้อมูลของระบบ"
     fi
 echo -e "${GRAY}[${RED}-${GRAY}]${RED} ───────────────── /// ────────────────── ${YELLOW}"
     echo -e "${YELLOW}[${GREEN}01${YELLOW}]${WHITE} | ติดตั้งระบบ SlowDNS "
