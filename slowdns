@@ -20,17 +20,16 @@ BG_GRAY='\033[0;47m'
 RESET='\033[0m'
 clear
 slowdns () {
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ───────────────── /// ────────────────── ${YELLOW}"
-figlet -p -f slant SlowDNS
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ────────── SlowDNS By E-SAN VPN ───────── ${YELLOW}"
+echo -e "${RED}────────────    E-SAN VPN    ──────────── ${YELLOW}"
     archivo="/root/server.pub"
     if [ -e "$archivo" ]; then
         echo -ne "${YELLOW}NameServer คือ : ${WHITE} " && cat /etc/slowdns/infons
+echo ""
         echo -ne "${YELLOW}Public KEY คือ :\033[0m " && cat /root/server.pub
     else
         echo "ยังไม่มีข้อมูลของระบบ"
     fi
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ───────────────── /// ────────────────── ${YELLOW}"
+echo -e "${RED}────────────    E-SAN VPN    ──────────── ${YELLOW}"
     echo -e "${YELLOW}[${GREEN}01${YELLOW}]${WHITE} | ติดตั้งระบบ SlowDNS "
     echo -e "${YELLOW}[${GREEN}02${YELLOW}]${WHITE} | ดูข้อมูล "
     echo -e "${YELLOW}[${GREEN}03${YELLOW}]${WHITE} | เปิดระบบ SlowDNS "
