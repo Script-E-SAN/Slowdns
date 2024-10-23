@@ -25,8 +25,8 @@ figlet -p -f slant SlowDNS
 echo -e "${GRAY}[${RED}-${GRAY}]${RED} ────────── SlowDNS By E-SAN VPN ───────── ${YELLOW}"
     archivo="/root/server.pub"
     if [ -e "$archivo" ]; then
-        echo -ne "${YELLOW}YOUR NS: ${WHITE} " && cat /etc/slowdns/infons
-        echo -ne "${YELLOW}YOUR PUBLIC KEY:\033[0m " && cat /root/server.pub
+        echo -ne "${YELLOW}NameServer คือ : ${WHITE} " && cat /etc/slowdns/infons
+        echo -ne "${YELLOW}Public KEY คือ :\033[0m " && cat /root/server.pub
     else
         echo "ยังไม่มีข้อมูลของระบบ"
     fi
@@ -41,7 +41,7 @@ echo -e "${GRAY}[${RED}-${GRAY}]${RED} ─────────────�
     echo -e "${YELLOW}[${GREEN}08${YELLOW}]${WHITE} | ลบสคริปต์ "
     echo -e "${YELLOW}[${GREEN}00${YELLOW}]${WHITE} | ออก"
     echo ""
-    echo -ne "${YELLOW}What do you want to do?:\0033[m " && read option
+    echo -ne "${YELLOW} คุณต้องการทำอะไร :\0033[m " && read option
     case $option in
     1|01) Option1 ;;
     2|02) Option2 ;;
