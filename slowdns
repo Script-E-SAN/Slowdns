@@ -41,7 +41,7 @@ echo -e "${GRAY}[${RED}-${GRAY}]${RED} ─────────────�
     echo -e "${YELLOW}[${GREEN}08${YELLOW}]${WHITE} | ลบสคริปต์ "
     echo -e "${YELLOW}[${GREEN}00${YELLOW}]${WHITE} | ออก"
     echo ""
-    echo -ne "${YELLOW} คุณต้องการทำอะไร :\0033[m " && read option
+    echo -ne "${YELLOW} Number selected Enter :\0033[m " && read option
     case $option in
     1|01) Option1 ;;
     2|02) Option2 ;;
