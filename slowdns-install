@@ -49,7 +49,7 @@ echo -e "${GRAY}[${RED}-${GRAY}]${RED} ─────────────�
 figlet -p -f slant E-SAN
 echo -e "${GRAY}[${RED}-${GRAY}]${RED} ─────────────   SlowDNS By E-SAN-VPN   ────────────── ${YELLOW}"
 echo -e ""
-echo -e "      สคริปต์นี้จะติดตั้ง"
+echo -e "      สคริปต์นี้จะติดตั้ง "
 echo -e "     ชะลอตัวสำหรับการสร้างช่องสัญญาณ DNS ด้วย "
 echo -e ""
 echo -e "         \033[1;33mSlowDNS By E-SAN-VPN \033[1;37m"
