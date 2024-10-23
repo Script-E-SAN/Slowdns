@@ -73,7 +73,7 @@ echo ""
 echo -e "\033[1;31m ติดตั้งระบบ SlowDNS \033[1;33m"
 echo ""
 cd /etc/slowdns
-echo -ne "\033[1;32m NS หรือ NameServer ของคุณ \033[1;37m: "; read nameserver
+echo -ne "\033[1;32m กรอก NS หรือ NameServer \033[1;37m: "; read nameserver
 touch infons
 echo $nameserver > infons
 set_ns () {
