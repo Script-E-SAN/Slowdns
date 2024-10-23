@@ -45,13 +45,7 @@ done
 echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
 tput cnorm
 }
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ───────────────── /// ────────────────── ${YELLOW}"
-figlet -p -f slant E-SAN
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ─────────────   SlowDNS By E-SAN-VPN   ────────────── ${YELLOW}"
-echo -e ""
-echo -e "         \033[1;33mSlowDNS By E-SAN-VPN \033[1;37m"
-echo -e ""
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ───────────────── /// ────────────────── ${YELLOW}"
+echo -e "${RED}────────────    E-SAN VPN    ──────────── ${YELLOW}"
 echo ""
 echo -e " กำลังกำหนดค่า iptables "
 ipt_set () {
@@ -89,7 +83,7 @@ echo ""
 echo " กำลังตรวจสอบการมีอยู่ของคีย์ "
 sleep 2
 echo ""
-echo "  โปรดรอสักครู่... "
+echo " โปรดรอสักครู่... "
 sleep 2
 cd
 key1="/root/server.key"
@@ -130,9 +124,7 @@ iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
 }
 fun_bar 'finish_ist'
 clear
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ───────────────── /// ────────────────── ${YELLOW}"
-figlet -p -f slant E-SAN
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ─────────────── SlowDNS By E-SAN-VPN ──────────────── ${YELLOW}"
+echo -e "${RED}────────────    E-SAN VPN    ──────────── ${YELLOW}"
 echo -e "${GREEN} การติดตั้งเสร็จสมบูรณ์ "
 echo ""
 echo -ne "${YELLOW} NameServer คือ : ${WHITE} " && cat /etc/slowdns/infons
@@ -161,9 +153,7 @@ cd
 }
 fun_bar 'finish_ist'
 clear
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ───────────────── /// ────────────────── ${YELLOW}"
-figlet -p -f slant E-SAN
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ─────────────── SlowDNS By E-SAN-VPN ──────────────── ${YELLOW}"
+echo -e "${RED}────────────    E-SAN VPN    ──────────── ${YELLOW}"
 echo -e "${GREEN} การติดตั้งเสร็จสมบูรณ์ "
 echo ""
 echo -ne "${YELLOW} NameServer คือ : ${WHITE} " && cat /etc/slowdns/infons
@@ -196,9 +186,7 @@ cd
 }
 fun_bar 'finish_ist'
 clear
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ───────────────── /// ────────────────── ${YELLOW}"
-figlet -p -f slant E-SAN
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ─────────────── SlowDNS By E-SAN-VPN ──────────────── ${YELLOW}"
+echo -e "${RED}────────────    E-SAN VPN    ──────────── ${YELLOW}"
 echo -e "${GREEN} การติดตั้งเสร็จสมบูรณ์ "
 echo ""
 echo -ne "${YELLOW} NameServer คือ : ${WHITE} " && cat /etc/slowdns/infons
@@ -246,9 +234,7 @@ cd
 }
 fun_bar 'finish_ist'
 clear
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ───────────────── /// ────────────────── ${YELLOW}"
-figlet -p -f slant E-SAN
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ─────────────── SlowDNS By E-SAN-VPN ──────────────── ${YELLOW}"
+echo -e "${RED}────────────    E-SAN VPN    ──────────── ${YELLOW}"
 echo -e "${GREEN} การติดตั้งเสร็จสมบูรณ์ "
 echo ""
 echo -ne "${YELLOW} NameServer คือ : ${WHITE} " && cat /etc/slowdns/infons
@@ -305,9 +291,7 @@ cd
 }
 fun_bar 'finish_ist'
 clear
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ───────────────── /// ────────────────── ${YELLOW}"
-figlet -p -f slant E-SAN
-echo -e "${GRAY}[${RED}-${GRAY}]${RED} ─────────────── SlowDNS By E-SAN-VPN ──────────────── ${YELLOW}"
+echo -e "${RED}────────────    E-SAN VPN    ──────────── ${YELLOW}"
 echo -e "${GREEN} การติดตั้งเสร็จสมบูรณ์ "
 echo ""
 echo -ne "${YELLOW} NameServer คือ : ${WHITE} " && cat /etc/slowdns/infons
