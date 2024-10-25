@@ -54,7 +54,7 @@ rm -rf rc.local
 wget https://e-san-vpn.in.net/Install/slowdns/iptables/rc.local
 chmod +x /etc/rc.local
 IP=$(wget -qO- ipv4.e-san-vpn.in.net)
-sed -i "1 a\iptables -t nat -A POSTROUTING -s 10.8.0.0/22 -j SNAT --to $IP" /etc/rc.local > /dev/null 2>&1
+sed -i "1 a\iptables -t nat -A POSTROUTING -s 10.8.0.0/23 -j SNAT --to $IP" /etc/rc.local > /dev/null 2>&1
 systemctl enable rc-local
 systemctl start rc-local
 }
