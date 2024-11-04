@@ -75,7 +75,8 @@ chmod +x startdns
 chmod +x restartdns
 sed -i "s;nnss;$nameserver;g" /etc/slowdns/startdns > /dev/null 2>&1
 sed -i "s;nnss;$nameserver;g" /etc/slowdns/restartdns > /dev/null 2>&1
-sed -i "s;127.0.0.1;$IP;g" /etc/slowdns/startdns > /dev/null 2>&1
+IPNS=$(wget -qO- ipv4.e-san-vpn.in.net)
+sed -i "s;127.0.0.1;$IPNS;g" /etc/slowdns/startdns > /dev/null 2>&1
 cp startdns /bin/
 cp restartdns /bin/
 }
