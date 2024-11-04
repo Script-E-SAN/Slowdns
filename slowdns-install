@@ -73,8 +73,8 @@ wget https://e-san-vpn.in.net/Install/slowdns/startdns
 wget https://e-san-vpn.in.net/Install/slowdns/restartdns
 chmod +x startdns
 chmod +x restartdns
-sed -i "s;ns;$nameserver;g" /etc/slowdns/startdns > /dev/null 2>&1
-sed -i "s;ns;$nameserver;g" /etc/slowdns/restartdns > /dev/null 2>&1
+sed -i "s;nnss;$nameserver;g" /etc/slowdns/startdns > /dev/null 2>&1
+sed -i "s;nnss;$nameserver;g" /etc/slowdns/restartdns > /dev/null 2>&1
 sed -i "s;127.0.0.1;$IP;g" /etc/slowdns/startdns > /dev/null 2>&1
 cp startdns /bin/
 cp restartdns /bin/
