@@ -122,7 +122,6 @@ cp server.key /etc/slowdns/ && cp server.pub /etc/slowdns/
 cd /etc/slowdns
 iptables -I INPUT -p udp --dport 5300 -j ACCEPT
 iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
-./startdns
 }
 fun_bar 'finish_ist'
 clear
@@ -150,7 +149,6 @@ cd
 cp server.key /etc/slowdns/ && cp server.pub /etc/slowdns/
 iptables -I INPUT -p udp --dport 5300 -j ACCEPT
 iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
-cd /etc/slowdns && ./startdns
 cd
 }
 fun_bar 'finish_ist'
@@ -183,7 +181,6 @@ echo -e " สำเร็จแล้ว "
 finish_ist () {
 iptables -I INPUT -p udp --dport 5300 -j ACCEPT
 iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
-./startdns
 cd
 }
 fun_bar 'finish_ist'
@@ -231,7 +228,6 @@ echo -e " สำเร็จแล้ว "
 finish_ist () {
 iptables -I INPUT -p udp --dport 5300 -j ACCEPT
 iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
-./startdns
 cd
 }
 fun_bar 'finish_ist'
@@ -262,7 +258,6 @@ echo -e " สำเร็จแล้ว "
 finish_ist () {
 iptables -I INPUT -p udp --dport 5300 -j ACCEPT
 iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
-./startdns
 cd
 }
 fun_bar 'finish_ist'
@@ -288,7 +283,6 @@ echo -e "FINISHING..."
 finish_ist () {
 iptables -I INPUT -p udp --dport 5300 -j ACCEPT
 iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
-./startdns
 cd
 }
 fun_bar 'finish_ist'
