@@ -33,11 +33,6 @@ echo -e "${RED}────────────    E-SAN VPN    ────
     echo -e "${YELLOW}[${GREEN}01${YELLOW}]${WHITE} | ติดตั้งระบบ SlowDNS "
     echo -e "${YELLOW}[${GREEN}02${YELLOW}]${WHITE} | ดูข้อมูล "
     echo -e "${YELLOW}[${GREEN}03${YELLOW}]${WHITE} | เปิดระบบ SlowDNS "
-    echo -e "${YELLOW}[${GREEN}04${YELLOW}]${WHITE} | รีสตาร์ทระบบ SlowDNS "
-    echo -e "${YELLOW}[${GREEN}05${YELLOW}]${WHITE} | หยุดระบบ SlowDNS"
-    echo -e "${YELLOW}[${GREEN}06${YELLOW}]${WHITE} | ลบระบบ SlowDNS "
-    echo -e "${YELLOW}[${GREEN}07${YELLOW}]${WHITE} | อัปเดต/ติดตั้งใหม่ "
-    echo -e "${YELLOW}[${GREEN}08${YELLOW}]${WHITE} | ลบสคริปต์ "
     echo -e "${YELLOW}[${GREEN}00${YELLOW}]${WHITE} | ออก"
     echo ""
     echo -ne "${YELLOW} Enter the number :\0033[m " && read option
@@ -45,11 +40,6 @@ echo -e "${RED}────────────    E-SAN VPN    ────
     1|01) Option1 ;;
     2|02) Option2 ;;
     3|03) Option3 ;;
-    4|04) Option4 ;;
-    5|05) Option5 ;;
-    6|06) Option6 ;;
-    7|07) Option7 ;;
-    8|08) Option8 ;;
     0|00) Sair ;;
     *) "Invalid option" ; echo ; slowdns ;;
     esac
@@ -68,37 +58,6 @@ Option2 () {
 Option3 () {
     clear
     bash /etc/slowdns/startdns
-}
-
-Option4 () {
-    clear
-    bash /etc/slowdns/restartdns
-}
-
-Option5 () {
-    clear
-    bash /etc/slowdns/stopdns
-}
-
-Option6 () {
-     clear
-    bash /etc/slowdns/stopdns
-    bash /etc/slowdns/remove-slow
-}
-
-Option7 () {
-    clear
-    wget https://raw.githubusercontent.com/powermx/dnstt/main/update
-    chmod +x update
-    bash update
-}
-
-Option8 () {
-     clear
-    bash /etc/slowdns/remove-slow
-    echo -e "\033[0;31mSlowDNS Manager Uninstalled!\033[0m"
-    sleep 2
-    rm /bin/slowdns
 }
 
 Sair() {
