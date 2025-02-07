@@ -151,7 +151,7 @@ clear
 echo -e "${RED}────────────    E-SAN VPN    ──────────── ${YELLOW}"
 echo -e "${GREEN} การติดตั้งเสร็จสมบูรณ์ "
 echo ""
-echo -ne "${YELLOW} NameServer คือ : ${WHITE} " && cat /etc/slowdns/infons
+echo -ne "${YELLOW} DNS คือ : ${WHITE} " && cat /etc/slowdns/infons
 echo ""
 echo -ne "${YELLOW} Public KEY คือ :\033[0m " && cat /root/server.pub
 echo ""
