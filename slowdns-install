@@ -49,14 +49,40 @@ echo -e "${RED}────────────    E-SAN VPN    ────
 echo ""
 echo -e " กำลังกำหนดค่า iptables "
 ipt_set () {
-cd /etc
-rm -rf rc.local
-wget https://e-san-vpn.in.net/Install/slowdns/iptables/rc.local
-chmod +x /etc/rc.local
 IP=$(wget -qO- ipv4.e-san-vpn.in.net)
-sed -i "1 a\iptables -t nat -A POSTROUTING -s 10.8.0.0/22 -j SNAT --to $IP" /etc/rc.local > /dev/null 2>&1
-systemctl enable rc-local
-systemctl start rc-local
+
+rm -f /etc/rc.local
+
+cat > /etc/rc.local <<EOF
+#!/bin/sh -e
+
+WAN_IP="$IP"
+VPN_NET="10.8.0.0/22"
+DNS_PORT="5300"
+
+iptables -t nat -C POSTROUTING -s "\$VPN_NET" -j SNAT --to-source "\$WAN_IP" 2>/dev/null || \\
+iptables -t nat -A POSTROUTING -s "\$VPN_NET" -j SNAT --to-source "\$WAN_IP"
+
+for CHAIN in INPUT OUTPUT FORWARD; do
+    iptables -C "\$CHAIN" -p tcp --dport 25 -j DROP 2>/dev/null || \\
+    iptables -A "\$CHAIN" -p tcp --dport 25 -j DROP
+
+    iptables -C "\$CHAIN" -p tcp --dport 110 -j DROP 2>/dev/null || \\
+    iptables -A "\$CHAIN" -p tcp --dport 110 -j DROP
+done
+
+iptables -C INPUT -p udp --dport "\$DNS_PORT" -j ACCEPT 2>/dev/null || \\
+iptables -I INPUT -p udp --dport "\$DNS_PORT" -j ACCEPT
+
+iptables -t nat -C PREROUTING -p udp --dport 53 -j REDIRECT --to-ports "\$DNS_PORT" 2>/dev/null || \\
+iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports "\$DNS_PORT"
+
+exit 0
+EOF
+
+chmod +x /etc/rc.local
+systemctl enable rc-local >/dev/null 2>&1
+systemctl restart rc-local >/dev/null 2>&1
 }
 fun_bar 'ipt_set'
 clear
@@ -113,8 +139,6 @@ finish_ist () {
 cd
 cp server.key /etc/slowdns/ && cp server.pub /etc/slowdns/
 cd /etc/slowdns
-iptables -I INPUT -p udp --dport 5300 -j ACCEPT
-iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
 }
 fun_bar 'finish_ist'
 clear
@@ -140,8 +164,6 @@ echo -e " สำเร็จแล้ว "
 finish_ist () {
 cd
 cp server.key /etc/slowdns/ && cp server.pub /etc/slowdns/
-iptables -I INPUT -p udp --dport 5300 -j ACCEPT
-iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
 cd
 }
 fun_bar 'finish_ist'
@@ -172,8 +194,6 @@ sleep 1
 cd /etc/slowdns/
 echo -e " สำเร็จแล้ว "
 finish_ist () {
-iptables -I INPUT -p udp --dport 5300 -j ACCEPT
-iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
 cd
 }
 fun_bar 'finish_ist'
@@ -219,8 +239,6 @@ cd /etc/slowdns/
 ./dns-server -gen-key -privkey-file /root/server.key -pubkey-file /root/server.pub
 echo -e " สำเร็จแล้ว "
 finish_ist () {
-iptables -I INPUT -p udp --dport 5300 -j ACCEPT
-iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
 cd
 }
 fun_bar 'finish_ist'
@@ -249,8 +267,6 @@ sleep 1
 cd /etc/slowdns/
 echo -e " สำเร็จแล้ว "
 finish_ist () {
-iptables -I INPUT -p udp --dport 5300 -j ACCEPT
-iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
 cd
 }
 fun_bar 'finish_ist'
@@ -272,8 +288,6 @@ cd /etc/slowdns/
 ./dns-server -gen-key -privkey-file /root/server.key -pubkey-file /root/server.pub
 echo -e "FINISHING..."
 finish_ist () {
-iptables -I INPUT -p udp --dport 5300 -j ACCEPT
-iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
 cd
 }
 fun_bar 'finish_ist'
