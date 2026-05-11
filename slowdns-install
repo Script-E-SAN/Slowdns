@@ -53,7 +53,7 @@ IP=$(wget -qO- ipv4.e-san-vpn.in.net)
 
 rm -f /etc/rc.local
 
-cat > /etc/rc.local <<EOF
+cat > /etc/rc.local <<'EOF'
 #!/bin/sh -e
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
