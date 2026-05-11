@@ -62,18 +62,18 @@ WAN_IP="$IP"
 VPN_NET="10.8.0.0/22"
 DNS_PORT="5300"
 
-iptables -t nat -C POSTROUTING -s "\$VPN_NET" -j SNAT --to-source "\$WAN_IP" 2>/dev/null || \
+iptables -t nat -C POSTROUTING -s "\$VPN_NET" -j SNAT --to-source "\$WAN_IP" 2>/dev/null || \\
 iptables -t nat -A POSTROUTING -s "\$VPN_NET" -j SNAT --to-source "\$WAN_IP"
 
 for PORT in 25 110; do
-    iptables -C FORWARD -s "\$VPN_NET" -p tcp --dport "\$PORT" -j DROP 2>/dev/null || \
+    iptables -C FORWARD -s "\$VPN_NET" -p tcp --dport "\$PORT" -j DROP 2>/dev/null || \\
     iptables -A FORWARD -s "\$VPN_NET" -p tcp --dport "\$PORT" -j DROP
 done
 
-iptables -C INPUT -p udp --dport "\$DNS_PORT" -j ACCEPT 2>/dev/null || \
+iptables -C INPUT -p udp --dport "\$DNS_PORT" -j ACCEPT 2>/dev/null || \\
 iptables -I INPUT -p udp --dport "\$DNS_PORT" -j ACCEPT
 
-iptables -t nat -C PREROUTING -p udp --dport 53 -j REDIRECT --to-ports "\$DNS_PORT" 2>/dev/null || \
+iptables -t nat -C PREROUTING -p udp --dport 53 -j REDIRECT --to-ports "\$DNS_PORT" 2>/dev/null || \\
 iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports "\$DNS_PORT"
 
 exit 0
